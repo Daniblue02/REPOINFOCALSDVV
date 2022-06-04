@@ -9,7 +9,7 @@ int main()
     for (int i=0; i<3; i++)
     {
         std::cout << "Nombre del estudiante: ";
-        std::cin.ignore();
+
         std::getline(std::cin, alumnos[i][0]);
         std::cout << "1er Parcial: \t";
         std::cin >> alumnos[i][1];
@@ -18,6 +18,7 @@ int main()
         std::cout << "3er Parcial: \t";
         std::cin >> alumnos[i][3];
         std::cout << "\n";
+        std::cin.ignore();
     }
     float prom;
     std::cout << "\n\n\t\t\t\t\t| |  HOJA DE PROMEDIOS  | |\n\n";
@@ -25,7 +26,7 @@ int main()
     for (int i = 0; i < 3; i++)
     {
         prom = (stof(alumnos[i][1])+stof(alumnos[i][2])+stof(alumnos[i][3]))/3;
-        std::cout << alumnos[i][0] <<"\t\t\t\t"<< alumnos[i][1] << "\t\t\t" << alumnos[i][2] << "\t\t\t" << alumnos[i][3] << "\t      \t" << prom <<"\n-------------------------------------------------------------------------------------------------------------------\n";
+        std::cout << alumnos[i][0] <<"\t\t\t"<< alumnos[i][1] << "\t\t\t" << alumnos[i][2] << "\t\t\t" << alumnos[i][3] << "\t      \t" << prom <<"\n-------------------------------------------------------------------------------------------------------------------\n";
 
     }
     std::cout << "\n\n\n\n\n\n\n\n\n";
