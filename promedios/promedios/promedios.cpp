@@ -8,7 +8,7 @@ int main()
     std::cout << "\n";
     for (int i=0; i<3; i++)
     {
-        std::cout << "Nombre del estudiante: ";
+        std::cout << "Nombre y apellido del estudiante: ";
 
         std::getline(std::cin, alumnos[i][0]);
         std::cout << "1er Parcial: \t";
