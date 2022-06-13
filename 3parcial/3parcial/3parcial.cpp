@@ -90,6 +90,7 @@ int main()
         std::cout << std::endl << std::endl;
     }
 
+    R:
     for (int i = 0; i < cantAl; i++)
     {
        float promedio= ((stof(Alumnos[i][4]) + stof(Alumnos[i][5]) + stof(Alumnos[i][6])) / 3);
@@ -122,9 +123,81 @@ int main()
         std::cout << std::endl << std::endl;
     }
 
+    int entrada2 = 0,entrada3=0;
+    R2:
+    std::cout << std::endl << std::endl;
+    std::cout << "DESEA REALIZAR ALGUNA MODIFICACION?(1/2)" << std::endl;
+    std::cout << "1. Si\n2. No\n\n";
+    std::cin >> entrada2;
+    std::cout << std::endl;
+    if (entrada2 == 1)
+    {
+        std::cout << "Alumno para modificar:  (1-3)" << std::endl;
+        for (int i = 0; i < cantAl; i++)
+        {
+            std::cout << i + 1 << ". ";
+            for (int j = 0; j < 4; j++)
+            {
+                std::cout << Alumnos[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
+        std::cout << std::endl;
+        std::cin >> entrada3;
+        std::cout << std::endl;
 
-    std::cout << std::endl << "FIN" << std::endl << std::endl;
-
-
+        std::cout << "Que desea modificar? (1/2) " << std::endl;
+        std::cout << "1.Nombres y Apellidos\n2.Notas" << std::endl;
+        std::cout << std::endl;
+        std::cin >> entrada2;
+        std::cout << std::endl;
+        if (entrada2 == 1)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                std::cout << Alumnos[entrada3-1][j] << " ";
+            }
+            std::cout << std::endl;
+            std::cout << "Seleccione (1-4):" << std::endl;
+            std::cout << "1.Apellido Paterno\n2.Apellido Materno\n3.Primer Nombre\n4.Segundo Nombre" << std::endl;
+            std::cout << std::endl;
+            std::cin >> entrada2;
+            std::cout << std::endl;
+            std::cout << "ACTUAL: " << Alumnos[entrada3 - 1][entrada2 - 1] << std::endl;
+            std::cout << "NUEVO: ";
+            std::cin >> entrada;
+            Alumnos[entrada3 - 1][entrada2 - 1] = entrada;
+            goto R;
+        }
+        else if (entrada2 == 2)
+        {
+            std::cout << "Que nota desea modificar? (1-3) " << std::endl;
+            std::cout << "1.er parcial\n2.do parcial\n3.er parcial" << std::endl;
+            std::cout << std::endl;
+            std::cin >> entrada2;
+            std::cout << std::endl;
+            std::cout << entrada2 << " Parcial || Estudiante : ";
+            for (int j = 0; j < 4; j++)
+            {
+                std::cout << Alumnos[entrada3 - 1][j] << " ";
+            }
+            std::cout << std::endl;
+            std::cout << "NOTA ACTUAL: " << Alumnos[entrada3 - 1][entrada2 + 3] << std::endl;
+            std::cout << "NOTA NUEVA: ";
+            std::cin >> entrada;
+            Alumnos[entrada3 - 1][entrada2 + 3] = entrada;
+            goto R;
+        }
+        
+    }
+    else if (entrada2 == 2)
+    {
+        return 0;
+    }
+    else
+    {
+        std::cout << "Error 32x009( Entrada distinta a '1'/'2' )\n\n";
+        goto R2;
+    }
     return 0;
 }
