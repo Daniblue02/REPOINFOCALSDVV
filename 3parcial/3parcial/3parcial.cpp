@@ -96,7 +96,7 @@ int main()
        float promedio= ((stof(Alumnos[i][4]) + stof(Alumnos[i][5]) + stof(Alumnos[i][6])) / 3);
        Alumnos[i][7] = std::to_string(promedio);
     }
-
+    R3:
     std::cout << std::endl << std::endl << std::endl;
     std::cout << "\tNotas finales: " << std::endl << std::endl;
     
@@ -147,7 +147,7 @@ int main()
         std::cout << std::endl;
 
         std::cout << "Que desea modificar? (1/2) " << std::endl;
-        std::cout << "1.Nombres y Apellidos\n2.Notas" << std::endl;
+        std::cout << "1.Nombres y Apellidos\n2.Notas\n3.Eliminar" << std::endl;
         std::cout << std::endl;
         std::cin >> entrada2;
         std::cout << std::endl;
@@ -187,6 +187,37 @@ int main()
             std::cin >> entrada;
             Alumnos[entrada3 - 1][entrada2 + 3] = entrada;
             goto R;
+        }
+        else if (entrada2 == 3) 
+        {
+            std::cout << "Esta seguro de que desea eliminar a: " << std:: endl;
+            for (int j = 0; j < 4; j++)
+            {
+                std::cout << Alumnos[entrada3 - 1][j] << " ";
+            }
+            std::cout << std::endl;
+            std::cout << "1.SI\n2.NO" << std::endl;
+            std::cin >> entrada2;
+
+            if (entrada2 == 1)
+            {
+                for (int i=entrada3; i <= 2 ; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        Alumnos[i-1][j] = Alumnos[i][j];
+                    }
+                }
+                for (int j = 0; j < 8; j++)
+                    {
+                        Alumnos[2][j].clear();
+                    }
+                goto R3;
+            }
+            else
+            {
+                goto R;
+            }
         }
         
     }
