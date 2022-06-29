@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 #include <limits>
-std::string Alumnos[3][5];
+std::string Alumnos[3][6];
 std::string entrada;
 int cantAl = 3;
-int res,res2;
+int res,res2,yu=0;
 
 int menu();
 void showAl();
@@ -13,10 +13,11 @@ void notas();
 void promediar();
 void gradepg();
 void deleteUser();
-
+void observ();
+void exit();
 int main()
 {
-    for(;;)
+    for(;yu==0;)
     { 
         system("CLS");
         res = menu();
@@ -42,6 +43,14 @@ int main()
         {
             deleteUser();
         }
+        else if (res == 6)
+        {
+            observ();
+        }
+        else if(res==7)
+        {
+        	exit();
+		}
         std::cout << "\n\n";
         system("pause");
 
@@ -54,7 +63,7 @@ int menu()
     int entradaS;
     std::cout << "\t||[|| SISTEMA DE NOTAS ||]||\n\n";
     std::cout << "Seleccione (1-5)\n";
-    std::cout << "1. Ver Alumnos\n2. Agregar Alumnos\n3. Ingresar/Modificar Notas\n4. Imprimir Notas\n5. Eliminar Alumnos \n\n";
+    std::cout << "1. Ver Alumnos\n2. Agregar Alumnos\n3. Ingresar/Modificar Notas\n4. Imprimir Notas\n5. Eliminar Alumnos\n6. Observaciones\n7. Salir \n\n";
     std::cin >> entradaS;
     return entradaS;
 }
@@ -143,12 +152,12 @@ void deleteUser()
     {
         for (int i = res; i < 3; i++)
         {
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < 6; j++)
             {
                 Alumnos[i - 1][j] = Alumnos[i][j];
             }
         }
-        for (int j = 0; j < 5; j++)
+        for (int j = 0; j < 6; j++)
         {
             Alumnos[2][j].clear();
         }
@@ -157,4 +166,45 @@ void deleteUser()
     {
         
     }
+}
+void observ()
+{
+	for (int i = 0; i < cantAl; i++)
+    {
+        std::cout << i + 1 << ". " << Alumnos[i][0] << "\n\t\t\t Observacion: " << Alumnos[i][5] << "\n----------------------------------------------------------------------------------------------------\n";
+	}
+	    std::cout << "1.Ingresar/modificar\n2.Eliminar Observacion\n\n";
+        std::cin >> res;
+        system("CLS");
+        if (res == 1)
+        {
+        	std::cout << "Seleccione Alumno:\n";
+        	showAl();
+        	std::cin >> res2;
+        	system("CLS");
+        	std::cout << "Alumno: " << Alumnos[res2-1][0] << "\n";
+            std::cout << "Insertar Observacion: ";
+            std::cin.ignore();
+            std::getline (std::cin, entrada);
+            Alumnos[res2-1][5] = entrada;
+		}
+		else if(res==2)
+		{
+			std::cout << "Seleccione Alumno:\n";
+        	showAl();
+        	std::cin >> res2;
+        	system("CLS");
+        	std::cout << "OBSERVACIÓN ELIMINADA\n";
+        	Alumnos[res2-1][5].clear();
+		}
+}
+void exit()
+{
+	std::cout << "Está seguro que desea salir?\n";
+	std::cout << "1. SI \n2. NO\n\n";
+	std::cin >> res;
+	if (res == 1)
+	{
+		yu+=1;
+	}
 }
